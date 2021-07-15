@@ -62,7 +62,7 @@ def get_details(account_number):
     else:
         return (detail[0][0],detail[0][1],detail[0][2],detail[0][3],detail[0][4],detail[0][5],detail[0][6])
 
-#add new amount to customer in bank database
+#add new amount to customer's account in bank database
 def update_balance(amount,account_number):
     var_cursor.execute("select account_balance from bank where account_number=?",(account_number,))
     bal=var_cursor.fetchall()
@@ -72,7 +72,7 @@ def update_balance(amount,account_number):
     var_cursor.execute("update bank set account_balance=? where account_number=?",(new_bal,account_number))
     var_connect.commit()
 
-#deduct amount from customer bank database
+#deduct amount from customer's account in bank database
 def deduct_balance(amount,account_number):
     var_cursor.execute("select account_balance from bank where account_number=?",(account_number,))
     bal=var_cursor.fetchall()
